@@ -22,8 +22,8 @@ class Service {
             do {
                 let weather = try JSONDecoder().decode(WeatherData.self, from: result)
                 callback(weather)
-            } catch {
-//                print("Error serializing json:", jsonErr)
+            } catch let jsonErr {
+                print("Error serializing json:", jsonErr)
             }
         }.resume()
     }

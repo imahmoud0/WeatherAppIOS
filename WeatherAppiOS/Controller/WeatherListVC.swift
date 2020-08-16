@@ -30,7 +30,7 @@ class WeatherListVC: UIViewController, UISearchBarDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        manager.clearAllCity()
         setupsearch()
         loacationManagerCurrent.delegate = self
     }
@@ -231,6 +231,6 @@ extension WeatherListVC: CLLocationManagerDelegate {
     }
 
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        print("error:: \(error.localizedDescription)")
+//        print("error:: \(error.localizedDescription)")
     }
 }
