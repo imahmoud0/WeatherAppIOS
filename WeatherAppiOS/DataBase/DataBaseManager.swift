@@ -8,12 +8,15 @@
 
 import CoreData
 
+// MARK: - Database Protocol
 protocol DatabaseProtocol {
     var context: NSManagedObjectContext { get }
     func saveContext()
 }
 
 class DataBaseManager: DatabaseProtocol {
+    
+    // MARK: - Context
     var context: NSManagedObjectContext
     
     init() {
@@ -46,6 +49,7 @@ class DataBaseManager: DatabaseProtocol {
         }
     }
     
+    // MARK: - Save Context
     func saveContext() {
         
         if context.hasChanges {

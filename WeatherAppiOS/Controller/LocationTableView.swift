@@ -11,6 +11,7 @@ import MapKit
 
 class LocationTableView: UITableViewController {
 
+    // MARK: - Variables
      var handleLocationSearchDelegate: HandleLocationSearch?
      var matchingItems: [MKMapItem] = []
 
@@ -50,6 +51,8 @@ class LocationTableView: UITableViewController {
         dismiss(animated: true, completion: nil)
     }
 }
+
+// MARK: - UISearchResultsUpdating
 
 extension LocationTableView: UISearchResultsUpdating {
 

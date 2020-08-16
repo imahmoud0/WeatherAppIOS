@@ -16,21 +16,25 @@ protocol HandleLocationSearch {
 @available(iOS 13.0, *)
 class WeatherListVC: UIViewController, UISearchBarDelegate {
     
+    // MARK: - IBOutlet
     @IBOutlet weak var weatherTableView: UITableView!
+    
+    // MARK: - Variables
     let loacationManagerCurrent = CLLocationManager()
     var currentLocation = CLLocation()
-    
     var weatherList: [WeatherData] = []
     var townResult = [Town]()
     var townModels = [TownModel]()
     var manager = Manager()
-
     let locationManager = CLLocationManager()
     var resultSearchController: UISearchController?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        manager.clearAllCity()
+        
+       // delete all city from database local for test
+       // manager.clearAllCity()
+        
         setupsearch()
         loacationManagerCurrent.delegate = self
     }
@@ -76,7 +80,7 @@ class WeatherListVC: UIViewController, UISearchBarDelegate {
     }
 
     // MARK: - Get Weather  Data from APIs
-
+    
     func getWeatherData() {
         guard Reachability.isConnectedToNetwork() else {
             let ac = UIAlertController(title: "No Internet connection", message: "Please ensure you are connected to the Internet", preferredStyle: .alert)
@@ -121,6 +125,8 @@ class WeatherListVC: UIViewController, UISearchBarDelegate {
         }
     }
 }
+
+// MARK: - Extensions & Delegates
 
 @available(iOS 13.0, *)
 extension WeatherListVC: UITableViewDelegate, UITableViewDataSource {

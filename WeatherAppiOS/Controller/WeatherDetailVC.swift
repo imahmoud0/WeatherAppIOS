@@ -10,12 +10,14 @@ import UIKit
 
 class WeatherDetailVC: UIViewController {
 
+    // MARK: - IBOutlets
     @IBOutlet weak var weatherDetailTV: UITableView!
     @IBOutlet weak var hourlyColloctionView: UICollectionView!
     @IBOutlet weak var cityName: UILabel!
     @IBOutlet weak var weatherState: UILabel!
     @IBOutlet weak var weatherTemp: UILabel!
         
+    // MARK: - Variables
     var twonModel: TownModel!
     var nameCity: String!
 
@@ -37,7 +39,7 @@ class WeatherDetailVC: UIViewController {
     }
 }
 
-// MARK: - Table view data source
+// MARK: - Extensions & Delegates
 
 extension WeatherDetailVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

@@ -10,6 +10,7 @@ import UIKit
 
 class WeatherCell: UITableViewCell {
 
+    // MARK: - IBOutlets
     @IBOutlet weak var weatherIcon: UIImageView!
     @IBOutlet weak var cityName: UILabel!
     @IBOutlet weak var weatherState: UILabel!

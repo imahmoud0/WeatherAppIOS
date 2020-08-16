@@ -10,6 +10,7 @@ import UIKit
 
 class HourlyCell: UICollectionViewCell {
 
+    // MARK: - IBOutlets
     @IBOutlet weak var time: UILabel!
     @IBOutlet weak var icon: UIImageView!
     @IBOutlet weak var temp: UILabel!
