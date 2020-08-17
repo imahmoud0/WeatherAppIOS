@@ -62,14 +62,25 @@ class WeatherListVCTest: XCTestCase {
     }
     
     
-    func testCheckWeatherApi() {
+    func testCheckWeatherAPI() {
         let longitude = 2.3510768
         let latitude  = 48.8567879
+        let expectation = XCTestExpectation.init(description: "call api")
         let url = "\(Config.baseUrl)lat=\(latitude)&lon=\(longitude)\(Config.apiKey)\(Config.units)\(Config.units)"
         guard let requestURL = URL(string: url) else { return }
-        Service.shared.getData(requestURL, callback: { weather in
-            XCTFail("Fail")
+        Service.shared.getData(requestURL, callback: { weather, err in
+            guard err == nil else {
+                XCTFail("Fail")
+                return
+            }
+            XCTAssertNil(err, "Error should be nil")
+            XCTAssertEqual(weather.lon, longitude)
+            XCTAssertEqual(weather.lat, latitude)
+            
+            // The request is finished, so our expectation
+            expectation.fulfill()
         })
+        
     }
     
 }

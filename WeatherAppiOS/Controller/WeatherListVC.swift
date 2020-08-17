@@ -97,7 +97,7 @@ class WeatherListVC: UIViewController, UISearchBarDelegate {
             let url = "\(Config.baseUrl)lat=\(town.latitude)&lon=\(town.longitude)\(Config.apiKey)\(Config.units)\(Config.units)"
             guard let requestURL = URL(string: url) else { return }
             
-            Service.shared.getData(requestURL, callback: { weather in
+            Service.shared.getData(requestURL, callback: { weather, _  in
                 self.townModels.append(TownModel(town: town, weather: weather))
                 DispatchQueue.main.async {
                     self.weatherTableView.reloadData()

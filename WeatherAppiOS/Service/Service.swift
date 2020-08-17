@@ -8,7 +8,7 @@
 
 import Foundation
 
-typealias WeatherCallback = (WeatherData) -> Void
+typealias WeatherCallback = (WeatherData, Error?) -> Void
 
 class Service {
     
@@ -16,12 +16,12 @@ class Service {
     static let shared = Service()
     
     func getData(_ url: URL, callback: @escaping WeatherCallback) {
-        URLSession.shared.dataTask(with: url) { (result, _, _) in
+        URLSession.shared.dataTask(with: url) { (result, _, error) in
             guard let result = result else { return }
             
             do {
                 let weather = try JSONDecoder().decode(WeatherData.self, from: result)
-                callback(weather)
+                callback(weather, nil)
             } catch let jsonErr {
                 print("Error serializing json:", jsonErr)
             }
