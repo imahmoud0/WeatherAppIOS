@@ -20,7 +20,6 @@ class WeatherListVC: UIViewController, UISearchBarDelegate {
     @IBOutlet weak var weatherTableView: UITableView!
     
     // MARK: - Variables
-    let loacationManagerCurrent = CLLocationManager()
     var currentLocation = CLLocation()
     var weatherList: [WeatherData] = []
     var townResult = [Town]()
@@ -35,8 +34,11 @@ class WeatherListVC: UIViewController, UISearchBarDelegate {
        // delete all city from database local for test
        // manager.clearAllCity()
         
+        // Add user location automatically when the app starts
+         getCurrentWeather()
+        
         setupsearch()
-        loacationManagerCurrent.delegate = self
+        locationManager.delegate = self
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -111,19 +113,26 @@ class WeatherListVC: UIViewController, UISearchBarDelegate {
     }
 
     @IBAction func getCurrentWeather(_ sender: UIBarButtonItem) {
+      getCurrentWeather()
+    }
+    
+    func getCurrentWeather() {
         if CLLocationManager.authorizationStatus() == .authorizedWhenInUse {
-            self.loacationManagerCurrent.startUpdatingLocation()
+            self.locationManager.startUpdatingLocation()
             let geoCoder = CLGeocoder()
-            geoCoder.reverseGeocodeLocation(self.currentLocation, completionHandler: { (placemarks, _) -> Void in
-                if let cityName = placemarks?.first?.locality {
-                    let city = City(name: cityName, longitude: self.currentLocation.coordinate.longitude, latitude: self.currentLocation.coordinate.latitude)
-                    self.manager.addCity(city)
-                    self.townResult = self.manager.getCity()
-                    self.getWeatherData()
-                }
-            })
+            DispatchQueue.main.async {
+                geoCoder.reverseGeocodeLocation(self.currentLocation, completionHandler: { (placemarks, _) -> Void in
+                    if let cityName = placemarks?.last?.locality {
+                        let city = City(name: cityName, longitude: self.currentLocation.coordinate.longitude, latitude: self.currentLocation.coordinate.latitude)
+                        self.manager.addCity(city)
+                        self.townResult = self.manager.getCity()
+                        self.getWeatherData()
+                    }
+                })
+            }
         }
     }
+
 }
 
 // MARK: - Extensions & Delegates
@@ -230,9 +239,9 @@ extension WeatherListVC: CLLocationManagerDelegate {
     }
 
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        if let location = locations.first {
+        if let location = locations.last {
             self.currentLocation = location
-            self.loacationManagerCurrent.stopUpdatingLocation()
+            self.locationManager.stopUpdatingLocation()
         }
     }
 

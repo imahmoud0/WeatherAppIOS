@@ -2,7 +2,6 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="XO8-W2-4Nf">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -13,7 +12,7 @@
         <!--Weather ListVC-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="WeatherListVC" customModule="WeatherAppiOS" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="WeatherListVC" customModule="WeatherApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -49,9 +48,9 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" id="UsJ-3A-8cW">
-                        <barButtonItem key="rightBarButtonItem" title="My Location" id="gpZ-x7-Zk5">
+                        <barButtonItem key="rightBarButtonItem" title="MyLocation" id="Wnh-9Z-LmM">
                             <connections>
-                                <action selector="getCurrentWeather:" destination="BYZ-38-t0r" id="wro-hf-nb5"/>
+                                <action selector="getCurrentWeather:" destination="BYZ-38-t0r" id="DO6-ki-FxT"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -67,7 +66,7 @@
         <!--Weather-->
         <scene sceneID="UGh-XZ-Xnn">
             <objects>
-                <viewController id="XGz-gn-X8S" customClass="WeatherDetailVC" customModule="WeatherAppiOS" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="XGz-gn-X8S" customClass="WeatherDetailVC" customModule="WeatherApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="pXG-90-IH1">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -216,7 +215,7 @@
         <!--Location Table View-->
         <scene sceneID="v8K-oA-JjA">
             <objects>
-                <tableViewController storyboardIdentifier="LocationTableView" id="Lc3-pI-w1T" customClass="LocationTableView" customModule="WeatherAppiOS" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="LocationTableView" id="Lc3-pI-w1T" customClass="LocationTableView" customModule="WeatherApp" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="eJN-7m-d2F">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

@@ -7,7 +7,7 @@
 //
 
 import XCTest
-@testable import WeatherAppiOS
+@testable import WeatherApp
 
 class WeatherListVCTest: XCTestCase {
     
@@ -34,21 +34,42 @@ class WeatherListVCTest: XCTestCase {
         }
     }
     
+    func testCheckLocalDataBaseIsEmpty() {
+        let cities = manager.getCity()
+        XCTAssertTrue(cities.isEmpty)
+    }
+    
+    func testCheckLocalDataBaseNotEmpty() {
+        let cities = manager.getCity()
+        XCTAssertFalse(cities.isEmpty)
+    }
+    
+    func testClearDataBase() {
+        manager.clearAllCity()
+    }
     
     func testGetCityParis() {
         let townName  = "Paris"
-        let longitude = 48.8567879
-        let latitude  = 2.3510768
+        let longitude = 2.3510768
+        let latitude  = 48.8567879
         let cities = manager.getCity()
         
-        guard cities.count > 0 else { return }
-        
         for city in cities {
-            XCTAssertTrue(cities.contains(city))
             XCTAssertEqual(townName, city.name)
             XCTAssertEqual(longitude, city.longitude)
             XCTAssertEqual(latitude, city.latitude)
         }
+    }
+    
+    
+    func testCheckWeatherApi() {
+        let longitude = 2.3510768
+        let latitude  = 48.8567879
+        let url = "\(Config.baseUrl)lat=\(latitude)&lon=\(longitude)\(Config.apiKey)\(Config.units)\(Config.units)"
+        guard let requestURL = URL(string: url) else { return }
+        Service.shared.getData(requestURL, callback: { weather in
+            XCTFail("Fail")
+        })
     }
     
 }
