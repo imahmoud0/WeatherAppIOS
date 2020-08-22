@@ -8,6 +8,7 @@
 
 import UIKit
 
+@available(iOS 13.0, *)
 class WeatherDetailVC: UIViewController {
 
     // MARK: - IBOutlets
@@ -20,6 +21,7 @@ class WeatherDetailVC: UIViewController {
     // MARK: - Variables
     var twonModel: TownModel!
     var nameCity: String!
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,6 +43,7 @@ class WeatherDetailVC: UIViewController {
 
 // MARK: - Extensions & Delegates
 
+@available(iOS 13.0, *)
 extension WeatherDetailVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return twonModel.weather.daily?.count ?? 0
@@ -87,6 +90,7 @@ extension WeatherDetailVC: UITableViewDelegate, UITableViewDataSource {
 
 // MARK: - Collection View data source
 
+@available(iOS 13.0, *)
 extension WeatherDetailVC: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -117,6 +121,7 @@ extension WeatherDetailVC: UICollectionViewDelegate, UICollectionViewDataSource 
     }
 }
 
+@available(iOS 13.0, *)
 extension WeatherDetailVC: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let itemSize = (self.hourlyColloctionView.frame.width / 6)

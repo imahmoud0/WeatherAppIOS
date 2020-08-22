@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="XO8-W2-4Nf">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -47,13 +48,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <navigationItem key="navigationItem" id="UsJ-3A-8cW">
-                        <barButtonItem key="rightBarButtonItem" title="MyLocation" id="Wnh-9Z-LmM">
-                            <connections>
-                                <action selector="getCurrentWeather:" destination="BYZ-38-t0r" id="DO6-ki-FxT"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="UsJ-3A-8cW"/>
                     <connections>
                         <outlet property="weatherTableView" destination="Z3f-8x-6ab" id="dvH-R1-BzA"/>
                         <segue destination="XGz-gn-X8S" kind="show" identifier="detailsSegue" id="N0f-to-w4B"/>

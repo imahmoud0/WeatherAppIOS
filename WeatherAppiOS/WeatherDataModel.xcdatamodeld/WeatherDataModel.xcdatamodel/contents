@@ -16,6 +16,11 @@
                 <entry key="JSONKeyPath" value="name"/>
             </userInfo>
         </attribute>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="name"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
     </entity>
     <elements>
         <element name="Town" positionX="-63" positionY="-18" width="128" height="88"/>

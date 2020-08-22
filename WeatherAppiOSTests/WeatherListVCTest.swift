@@ -8,6 +8,7 @@
 
 import XCTest
 @testable import WeatherApp
+@testable import component
 
 class WeatherListVCTest: XCTestCase {
     
@@ -35,24 +36,24 @@ class WeatherListVCTest: XCTestCase {
     }
     
     func testCheckLocalDataBaseIsEmpty() {
-        let cities = manager.getCity()
+        let cities = manager.getTown()
         XCTAssertTrue(cities.isEmpty)
     }
     
     func testCheckLocalDataBaseNotEmpty() {
-        let cities = manager.getCity()
+        let cities = manager.getTown()
         XCTAssertFalse(cities.isEmpty)
     }
     
     func testClearDataBase() {
-        manager.clearAllCity()
+        manager.clearAllTown()
     }
     
     func testGetCityParis() {
         let townName  = "Paris"
         let longitude = 2.3510768
         let latitude  = 48.8567879
-        let cities = manager.getCity()
+        let cities = manager.getTown()
         
         for city in cities {
             XCTAssertEqual(townName, city.name)

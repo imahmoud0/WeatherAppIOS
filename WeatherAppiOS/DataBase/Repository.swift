@@ -16,8 +16,8 @@ class Repository {
         self.database = database
     }
 
-    // MARK: - Fetch City
-    func fetchCity() -> [Town] {
+    // MARK: - Fetch town
+    func fetchTown() -> [Town] {
         let fetchRequest: NSFetchRequest<Town> = Town.fetchRequest()
         do {
             let town = try database.context.fetch(fetchRequest)

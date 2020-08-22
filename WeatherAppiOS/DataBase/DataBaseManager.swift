@@ -35,8 +35,8 @@ class DataBaseManager: DatabaseProtocol {
         // create context
         context = NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType)
         context.persistentStoreCoordinator = psc
-        context.mergePolicy = NSOverwriteMergePolicy
-        
+        context.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
+
         // add store
         let urls = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
         let docURL = urls[urls.endIndex-1]

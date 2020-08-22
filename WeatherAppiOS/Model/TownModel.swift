@@ -6,6 +6,8 @@
 //  Copyright © 2020 brahmi. All rights reserved.
 //
 
+import  component
+
 // MARK: - TownModel
 struct TownModel {
     let town: Town
@@ -14,11 +16,4 @@ struct TownModel {
         self.town = town
         self.weather = weather
     }
-}
-
-// MARK: - City
-struct City {
-    let name: String?
-    let longitude: Double?
-    let latitude: Double?
 }

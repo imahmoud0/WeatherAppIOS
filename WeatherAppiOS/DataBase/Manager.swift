@@ -13,16 +13,16 @@ import CoreData
 class Manager {
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
 
-    // MARK: - Get Cities
-    func getCity() -> [Town] {
+    // MARK: - Get towns
+    func getTown() -> [Town] {
         let repo = Repository(database: appDelegate.database)
-        let cities = repo.fetchCity()
+        let towns = repo.fetchTown()
 
-        return cities
+        return towns
     }
 
-    // MARK: - Delete all Cities
-    func clearAllCity() {
+    // MARK: - Delete all towns
+    func clearAllTown() {
         let responseFetchRequest: NSFetchRequest<Town> = Town.fetchRequest()
         let responses = try! appDelegate.database.context.fetch(responseFetchRequest)
         for obj in responses {
@@ -31,13 +31,13 @@ class Manager {
         appDelegate.database.saveContext()
     }
 
-    // MARK: - Delete city
-       func deleteCity(name: String) {
+    // MARK: - Delete town
+       func deleteTown(name: String) {
            let responseFetchRequest: NSFetchRequest<Town> = Town.fetchRequest()
            responseFetchRequest.predicate = NSPredicate(format: "name== %@", "\(name)")
-        let cities = try! appDelegate.database.context.fetch(responseFetchRequest)
-           for city in cities {
-            appDelegate.database.context.delete(city)
+        let towns = try! appDelegate.database.context.fetch(responseFetchRequest)
+           for town in towns {
+            appDelegate.database.context.delete(town)
            }
            do {
             try appDelegate.database.context.save() // save
@@ -47,32 +47,16 @@ class Manager {
 
        }
 
-    // MARK: - add City
-    func addCity(_ town: City) {
-        
-        let cities = getCity()
-        var cityNames = [String]()
-        var exists: Bool = false
-        if cities.count > 0 {
-            for index in 0...cities.count - 1 {
-                cityNames.append(cities[index].name!)
-            }
-        }
-        if let town = town.name, cityNames.contains(town) {
-            print("already exist")
-            exists = true
-        }
-        if  !exists {
-            let city = Town(context: appDelegate.database.context)
-            city.name = town.name
-            city.latitude = town.latitude!
-            city.longitude = town.longitude!
-        }
+    
+    // MARK: - add town
+    func addTown() -> Town {
+        let town = NSEntityDescription.insertNewObject(forEntityName: "Town", into:  appDelegate.database.context) as! Town
         do {
             try appDelegate.database.context.save()
         }
         catch let error as NSError {
             print(error)
         }
+        return town
     }
 }
