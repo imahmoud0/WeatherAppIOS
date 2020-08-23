@@ -35,7 +35,7 @@ class WeatherDetailVC: UIViewController {
         if let tem = twonModel.weather.current?.temp {
             weatherTemp.text = "\(Int(tem).description)°"
         }
-        if let weather = twonModel.weather.current?.weather, weather.count > 0 {
+        if let weather = twonModel.weather.current?.weather, !weather.isEmpty {
             weatherState.text = (weather[0].weatherDescription)
         }
     }
@@ -61,7 +61,7 @@ extension WeatherDetailVC: UITableViewDelegate, UITableViewDataSource {
 
     func setUpCell(_ index: IndexPath, cell: WeatherDetailCell) {
         guard let dailyWeather = twonModel.weather.daily?[index.row] else { return }
-        if let weather = dailyWeather.weather, weather.count > 0 {
+        if let weather = dailyWeather.weather, !weather.isEmpty {
             cell.weatherIcon.image = UIImage(named: weather[0].icon!)
         }
         if let date = dailyWeather.dt {
@@ -108,7 +108,7 @@ extension WeatherDetailVC: UICollectionViewDelegate, UICollectionViewDataSource 
         if let temp = hourly.temp {
             cell.temp.text = Int(temp).description
         }
-        if let weather = hourly.weather, weather.count > 0 {
+        if let weather = hourly.weather, !weather.isEmpty {
             cell.icon.image = UIImage(named: weather[0].icon!)
         }
         if let date = hourly.dt {

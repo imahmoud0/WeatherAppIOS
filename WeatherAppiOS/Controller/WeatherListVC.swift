@@ -83,9 +83,11 @@ class WeatherListVC: UIViewController, UISearchBarDelegate {
     
     func getWeatherData() {
         guard Reachability.isConnectedToNetwork() else {
-            let ac = UIAlertController(title: "No Internet connection", message: "Please ensure you are connected to the Internet", preferredStyle: .alert)
-                  ac.addAction(UIAlertAction(title: "OK", style: .default))
-                  present(ac, animated: true)
+            let title = "No Internet connection"
+            let message = "Please ensure you are connected to the Internet"
+            let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default))
+            present(alert, animated: true)
             return
         }
         self.townModels.removeAll()
@@ -150,7 +152,7 @@ extension WeatherListVC: UITableViewDelegate, UITableViewDataSource {
         if let name = townModels[index.row].town.name {
             cell.cityName.text = name
         }
-        if let weather = currentWeather?.weather, weather.count > 0 {
+        if let weather = currentWeather?.weather, !weather.isEmpty {
             cell.weatherState.text = weather[0].weatherDescription
             cell.weatherIcon.image = UIImage(named: (weather[0].icon ?? ""))
         }

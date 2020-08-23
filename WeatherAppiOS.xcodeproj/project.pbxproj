@@ -173,7 +173,6 @@
 				2E73D1AE24E423600042DE80 /* View */,
 				2E73D1AB24E4223F0042DE80 /* Controller */,
 				2E73D1A824E414390042DE80 /* Configuration */,
-				2E73D1A524E343760042DE80 /* Service */,
 				2E73D20F24E601D80042DE80 /* DataBase */,
 				2E73D1F824E571040042DE80 /* Helper */,
 				2E73D1FF24E5D3A20042DE80 /* Extentions */,
@@ -213,13 +212,6 @@
 				2E73D20D24E5FB630042DE80 /* TownModel.swift */,
 			);
 			path = Model;
-			sourceTree = "<group>";
-		};
-		2E73D1A524E343760042DE80 /* Service */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Service;
 			sourceTree = "<group>";
 		};
 		2E73D1A824E414390042DE80 /* Configuration */ = {
@@ -307,6 +299,7 @@
 				2E73D16C24E342420042DE80 /* Frameworks */,
 				2E73D16D24E342420042DE80 /* Resources */,
 				2E993B5C24EC58F1004A362F /* Embed Frameworks */,
+				2E993B6C24F18CF4004A362F /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -448,6 +441,26 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		2E993B6C24F18CF4004A362F /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		2E73D16B24E342420042DE80 /* Sources */ = {

@@ -47,14 +47,12 @@ class Manager {
 
        }
 
-    
     // MARK: - add town
     func addTown() -> Town {
-        let town = NSEntityDescription.insertNewObject(forEntityName: "Town", into:  appDelegate.database.context) as! Town
+        let town = NSEntityDescription.insertNewObject(forEntityName: "Town", into: appDelegate.database.context) as! Town
         do {
             try appDelegate.database.context.save()
-        }
-        catch let error as NSError {
+        } catch let error as NSError {
             print(error)
         }
         return town
